@@ -1,31 +1,74 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div class="main">
+      <h1>Vitajte v chybajucom cisle</h1>
+      <input type="number" v-model="unknownNum" />
+      <button @click="testNumbers">Stlac odpoved</button>
+      <button @click="mixNumbers">Stlac Mixuj</button>
+      <div class="numbers">
+        <h1>{{ firstNum }} + {{ unknownNum }} = {{ finalNum }}</h1>
+      </div>
+      <div v-if="isGood">
+        <h2>Trafil si uc sa</h2>
+      </div>
+      <div v-if="isGood === false">
+        <h2>Netrafil si uc SA</h2>
+      </div>
     </div>
-    <router-view />
   </div>
 </template>
 
+<script>
+export default {
+  name: "App",
+  data() {
+    return {
+      firstNum: 0,
+      unknownNum: null,
+      finalNum: 0,
+      isGood: null
+    };
+  },
+  methods: {
+    getRandomInt(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+    },
+    mixNumbers() {
+      this.isGood = null;
+      this.firstNum = this.getRandomInt(1, 50);
+      this.finalNum = this.getRandomInt(51, 100);
+      this.unknownNum = null;
+    },
+    testNumbers() {
+      const sum = Number(this.firstNum) + Number(this.unknownNum);
+
+      if (sum === this.finalNum) {
+        this.isGood = true;
+      } else {
+        this.isGood = false;
+      }
+    }
+  },
+  created() {
+    this.mixNumbers();
+  }
+};
+</script>
+
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+  width: 100vw;
+  height: 100vh;
 
-#nav {
-  padding: 30px;
+  div.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+    .numbers {
     }
   }
 }
