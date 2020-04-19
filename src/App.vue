@@ -1,21 +1,77 @@
 <template>
-  <div id="app">
-    <div class="main">
-      <h1>Vitajte v chybajucom cisle</h1>
-      <input type="number" v-model="unknownNum" />
-      <button @click="testNumbers">Stlac odpoved</button>
-      <button @click="mixNumbers">Stlac Mixuj</button>
-      <div class="numbers">
-        <h1>{{ firstNum }} + {{ unknownNum }} = {{ finalNum }}</h1>
-      </div>
-      <div v-if="isGood">
-        <h2>Trafil si uc sa</h2>
-      </div>
-      <div v-if="isGood === false">
-        <h2>Netrafil si uc SA</h2>
-      </div>
-    </div>
-  </div>
+  <b-container id="app" fluid="sm">
+    <b-row>
+      <b-col></b-col>
+      <b-col cols="8">
+        <b-jumbotron
+          header="Skryté číslo"
+          lead="Vitajte v hre o chýbajucom čísle"
+        >
+          <h4>
+            Cieľom hry je vypočítať chýbajúce číslo z rovnice uvedenej dole.
+            Treba naťukať správne číslo a stlačiť gombík "Zistiť odpoveď". Na
+            ďalšiu hru treba stlačiť gombík "Mixuj čísla".
+          </h4>
+        </b-jumbotron>
+        <b-row>
+          <b-col> </b-col>
+          <b-col cols="8">
+            <b-form-group
+              id="input-group-1"
+              label="Chybajuce cislo:"
+              label-for="input-1"
+              description="Zadajte sem chybajuce cislo zo vzorca dole."
+            >
+              <b-form-input
+                id="input-1"
+                v-model="unknownNum"
+                type="number"
+                required
+                placeholder="Zadajte cislo"
+              ></b-form-input>
+            </b-form-group>
+          </b-col>
+          <b-col> </b-col>
+        </b-row>
+        <b-row style="margin-top: 2rem;" align-h="around">
+          <b-button size="lg" @click="testNumbers" variant="success">
+            Zistiť odpoveď
+          </b-button>
+
+          <b-button size="lg" @click="mixNumbers" variant="danger">
+            Mixuj čísla
+          </b-button>
+        </b-row>
+        <b-row style="margin-top: 2rem;" align-h="center">
+          <h1>{{ firstNum }} + {{ unknownNum }} = {{ finalNum }}</h1>
+        </b-row>
+      </b-col>
+      <b-col></b-col>
+    </b-row>
+    <b-row style="margin-top: 2rem;">
+      <b-col></b-col>
+      <b-col cols="8" class="text-center">
+        <div v-if="isGood">
+          <b-iconstack font-scale="5">
+            <b-icon stacked icon="square"></b-icon>
+            <b-icon stacked icon="check"></b-icon>
+          </b-iconstack>
+          <h2 style="align-text: center;">
+            Trafil si!
+          </h2>
+        </div>
+        <div v-if="isGood === false">
+          <b-iconstack font-scale="5">
+            <b-icon stacked icon="exclamation-circle"></b-icon>
+          </b-iconstack>
+          <h2 style="align-text: center;">
+            Netrafil si! Skús znova.
+          </h2>
+        </div>
+      </b-col>
+      <b-col></b-col>
+    </b-row>
+  </b-container>
 </template>
 
 <script>
@@ -57,19 +113,4 @@ export default {
 };
 </script>
 
-<style lang="scss">
-#app {
-  width: 100vw;
-  height: 100vh;
-
-  div.main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    .numbers {
-    }
-  }
-}
-</style>
+<style lang="scss"></style>
