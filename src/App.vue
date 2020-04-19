@@ -43,7 +43,11 @@
           </b-button>
         </b-row>
         <b-row style="margin-top: 2rem;" align-h="center">
-          <h1>{{ firstNum }} + {{ unknownNum }} = {{ finalNum }}</h1>
+          <h1>
+            {{ firstNum }} +
+            <span v-if="unknownNum === null || unknownNum === ''">?</span
+            >{{ unknownNum }} = {{ finalNum }}
+          </h1>
         </b-row>
       </b-col>
       <b-col></b-col>
