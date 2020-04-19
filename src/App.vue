@@ -61,7 +61,7 @@
             <b-icon stacked icon="check"></b-icon>
           </b-iconstack>
           <h2 style="align-text: center;">
-            Trafil si!
+            Trafa!
           </h2>
         </div>
         <div v-if="isGood === false">
@@ -69,7 +69,7 @@
             <b-icon stacked icon="exclamation-circle"></b-icon>
           </b-iconstack>
           <h2 style="align-text: center;">
-            Netrafil si! Skús znova.
+            Vedla! Skús znova.
           </h2>
         </div>
       </b-col>
