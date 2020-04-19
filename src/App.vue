@@ -61,7 +61,7 @@
             <b-icon stacked icon="check"></b-icon>
           </b-iconstack>
           <h2 style="align-text: center;">
-            Trafa!
+            Trefa!
           </h2>
         </div>
         <div v-if="isGood === false">

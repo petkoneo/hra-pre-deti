@@ -9,6 +9,7 @@
     "now-build": "npm run build",
     "pre-deploy": "now",
     "deploy": "now --prod",
+    "full-build": "npm run now-build && npm run pre-deploy && npm run deploy",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint"
